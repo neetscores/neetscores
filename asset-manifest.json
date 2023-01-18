@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/neetscores/static/css/main.7f4828fb.css",
+    "main.js": "/neetscores/static/js/main.5c6b9261.js",
+    "index.html": "/neetscores/index.html",
+    "main.7f4828fb.css.map": "/neetscores/static/css/main.7f4828fb.css.map",
+    "main.5c6b9261.js.map": "/neetscores/static/js/main.5c6b9261.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f4828fb.css",
+    "static/js/main.5c6b9261.js"
+  ]
+}
