@@ -22,7 +22,7 @@ function AdminDashboard() {
     <div className='admindash'>
       <h1>admin dashboard</h1>
       <div className="id"><strong>Email:</strong> {currentUser.email}</div>
-      <Button variant="link" onClick={handleLogout} style={{border:'1px solid red',textDecoration:'none',color:'blue',marginLeft:'3em',position:'fixed',top:'1em',right:'1em'}}>
+      <Button variant="link" onClick={handleLogout} >
           Log Out
         </Button>
     </div>

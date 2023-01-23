@@ -8,6 +8,8 @@ import UserLogin from "./components/UserLogin"
 import Error from "./Error"
 import SharedLayout from "./components/SharedLayout"
 import AboutUs from "./components/AboutUs"
+import UserDashBoard from "./components/UserDashBoard"
+<link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'></link>
 function App() {
   return (
     <div className="App">
@@ -20,6 +22,7 @@ function App() {
             <Route path="/user" element={<UserLogin/>}/>
             <Route path="/admin" element={<AdminDashboard/>}/>
             <Route path="/about" element={<AboutUs/>}/>
+            <Route path="/result" element={<UserDashBoard/>}/>
             </Route>
             <Route path="*" element={<Error/>}/>
           </Routes>
