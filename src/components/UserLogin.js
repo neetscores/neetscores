@@ -26,7 +26,7 @@ const UserLogin = () => {
       setResult(response);
       setFlag(true);
     } catch (err) {
-      setError("some internal error");
+      setError(err);
     }
   };
 
