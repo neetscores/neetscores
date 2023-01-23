@@ -5,7 +5,7 @@ import './App.css'
 import AdminDashboard from "./components/AdminDashboard"
 import AdminLogin from "./components/AdminLogin"
 import UserLogin from "./components/UserLogin"
-import Error from "./Error"
+import Error from "./components/Error"
 import SharedLayout from "./components/SharedLayout"
 import AboutUs from "./components/AboutUs"
 import UserDashBoard from "./components/UserDashBoard"
