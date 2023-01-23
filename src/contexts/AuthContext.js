@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth } from "../components/firebase"
+import { RecaptchaVerifier,signInWithPhoneNumber } from "firebase/auth"
 
 const AuthContext = React.createContext()
 
@@ -22,6 +23,11 @@ export function AuthProvider({ children }) {
   function logout() {
     return auth.signOut()
   }
+  function setUpRecaptha(number){
+    const recaptchaVerifier = new RecaptchaVerifier('recaptcha-container',{},auth);
+    recaptchaVerifier.render();
+    return signInWithPhoneNumber(auth,number,recaptchaVerifier);
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -36,7 +42,8 @@ export function AuthProvider({ children }) {
     currentUser,
     login,
     signup,
-    logout
+    logout,
+    setUpRecaptha
   }
 
   return (
