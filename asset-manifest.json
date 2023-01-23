@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/neetscores/static/css/main.b69112ed.css",
-    "main.js": "/neetscores/static/js/main.0525293b.js",
+    "main.css": "/neetscores/static/css/main.5074ed11.css",
+    "main.js": "/neetscores/static/js/main.b98f6bc2.js",
     "index.html": "/neetscores/index.html",
-    "main.b69112ed.css.map": "/neetscores/static/css/main.b69112ed.css.map",
-    "main.0525293b.js.map": "/neetscores/static/js/main.0525293b.js.map"
+    "main.5074ed11.css.map": "/neetscores/static/css/main.5074ed11.css.map",
+    "main.b98f6bc2.js.map": "/neetscores/static/js/main.b98f6bc2.js.map"
   },
   "entrypoints": [
-    "static/css/main.b69112ed.css",
-    "static/js/main.0525293b.js"
+    "static/css/main.5074ed11.css",
+    "static/js/main.b98f6bc2.js"
   ]
 }
