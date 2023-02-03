@@ -9,6 +9,7 @@ import Error from "./components/Error"
 import SharedLayout from "./components/SharedLayout"
 import AboutUs from "./components/AboutUs"
 import UserDashBoard from "./components/UserDashBoard"
+import Home from "./components/Home"
 <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'></link>
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <AuthProvider>
           <Routes>
           <Route path="/" element={<SharedLayout/>}>
-            <Route index element={<UserLogin/>}/>
+            <Route index element={<Home/>}/>
             <Route path="/adminlogin" element={<AdminLogin/>}/>
             <Route path="/user" element={<UserLogin/>}/>
             <Route path="/admin" element={<AdminDashboard/>}/>
