@@ -12,6 +12,12 @@ const app = firebase.initializeApp({
     storageBucket: "neetpredict-a1fa7.appspot.com",
     messagingSenderId: "1048878357114",
     appId: "1:1048878357114:web:bad1eb43abcb813fd839c3"
+  //   apiKey: "AIzaSyDrijAHNOT8NE15xZ_hEF7az5Kx0Jx9mRs",
+  // authDomain: "neet-ddbdd.firebaseapp.com",
+  // projectId: "neet-ddbdd",
+  // storageBucket: "neet-ddbdd.appspot.com",
+  // messagingSenderId: "370141495563",
+  // appId: "1:370141495563:web:6e38ba28751824c862a20e"
 });
 
 export const auth = app.auth();

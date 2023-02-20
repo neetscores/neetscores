@@ -5,7 +5,7 @@ import "../App.css"
 
 function Footeer() {
   return (
-    <div className='mainfooter'>  
+    <div className='mainfooter' >  
       <div bgColor='light' className='text-center text-lg-start text-muted'>
       <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>

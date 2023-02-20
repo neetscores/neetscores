@@ -1,5 +1,5 @@
 import React,{ useState } from 'react'
-import { Button,} from "react-bootstrap"
+import { Button } from '@material-ui/core';
 import { useAuth } from "../contexts/AuthContext"
 import {  useNavigate } from "react-router-dom"
 import '../App.css'
@@ -13,18 +13,20 @@ function AdminDashboard() {
 
     try {
       await logout()
-      navigate("/")
+      navigate("/adminlogin")
     } catch {
       setError("Failed to log out")
     }
   }
   return (
     <div className='admindash'>
-      <h1>admin dashboard</h1>
-      <div className="id"><strong>Email:</strong> {currentUser.email}</div>
-      <Button variant="link" onClick={handleLogout} >
+        <div style={{height:'100vh'}}>
+          <h4 style={{position:'absolute',top:'10em',left:'20em'}}><div className="id"><strong>Loged as:</strong> {currentUser.email}<Button variant="contained" onClick={handleLogout}  color='primary' style={{marginLeft:'2em'}}>
           Log Out
-        </Button>
+        </Button></div>
+      </h4>
+        </div>
+
     </div>
   )
 }
