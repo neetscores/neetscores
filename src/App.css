@@ -83,12 +83,13 @@ span {
 .mainfooter {
     position: relative;
     bottom: 0;
-    width: 100%;
+    width: 100%;    
     z-index: 0;
 
 }
 
-.theme {
+.theme
+{
     position: fixed;
     z-index: 3;
     top: 1em;
@@ -97,159 +98,171 @@ span {
 
 /* user dashboard */
 
-.span {
+.span{
     color: red;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
-
-.butt {
+.butt{
     transform: rotate(-40deg);
-    margin-top: 2em;
-    margin-bottom: 7em;
-    height: 15em;
+    margin-top:2em;
+    margin-bottom:7em;
+    height:15em;
     width: 15em;
-    translate: -4.5em;
-
+    translate:-4.5em;
+    
 }
-
-.resForm {
+.resForm{
     height: 100vh;
     width: 80%;
-    margin-left: 4em;
+    margin-left:4em;
     margin-top: 3em;
 }
-
-.userDash {
+.userDash{
     display: flex;
     justify-content: baseline;
 }
-
-.resultform {
+.resultform{
     /* position: absolute; */
     top: 6em;
     left: 10em;
     z-index: 1;
 }
+.cardHolder{
+    align-items: center;
+    justify-content: center;
+    padding-left: 15%;
+    position: absolute;
+    top: 15em;
+}
+.Dp>p::before{
+    content: '\2713';
+    display: inline-block;
+    color: rgb(16, 136, 0);
+    padding: 0 6px 0 0;
+}
+.Dp>p{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.Dh{
+    font-family: cursive;
+    padding: 0.5em;
+}
+
+
+/* NEET asp form */
+.resultform{
+    position: absolute;
+    top: 10em;
+    margin-left: 10em;
+}
+
+
 
 
 /* user login                          */
-.usermodal {
-    background-color: rgba(0, 0, 0, 0.5);
+.usermodal{
+    background-color:rgba(0, 0, 0, 0.5);
     position: fixed;
     /* margin-top:10em; */
     padding-top: 10em;
 }
-
 .userlog {
     /* width: 25em; */
     height: 20em;
     z-index: 0;
-    background-color: rgb(234, 236, 246);
+    background-color:rgb(234, 236, 246);
     color: black;
     display: flex;
     position: fixed;
     top: 0;
     right: 0;
 }
-
-.p1 {
+.p1{
     padding: 2em;
     color: white;
-    background-color: rgb(57, 77, 149, 1);
+    background-color: rgb(57, 77, 149,1);
 }
-
-.p2 {
+.p2{
     padding-top: 2em;
 }
 
 
 /* Top page            */
 
-.MainImage {
+.MainImage{
     background-image: url('../src/Images/neetImg.jpg');
     height: 80vh;
-    background-position: initial;
+    background-position:initial;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     opacity: 0.3;
 }
-
-.Neet {
+.Neet{
     font-size: 7em;
     font-weight: 600;
     position: absolute;
     top: 2em;
     left: 1em;
 }
-
-.Find {
+.Find{
     font-size: 2em;
     font-weight: 400;
     position: absolute;
     top: 11em;
     left: 4em;
 }
-
-.MainPage {
+.MainPage{
     height: 20em;
     margin: -3em 6em -17em 6em;
     position: relative;
     top: -12em;
     padding-top: 1em;
 }
-
-.logoName {
+.logoName{
     position: absolute;
     top: 0;
     color: rgb(0, 0, 0);
 }
-
 /* about page                          */
-.aboutp>p,
-.aboutp>h3 {
+.aboutp>p,.aboutp>h3{
     margin-left: 2em;
 }
-
-.aboutp {
+.aboutp{
     position: relative;
     top: -10em;
     margin: -3em 6em -10em 6em;
     width: 60%;
     border-radius: 0 50% 0 0;
 }
-
-.aboutp>p::before {
+.aboutp>p::before{
     content: '\2713';
     display: inline-block;
     color: rgb(255, 32, 32);
     padding: 0 6px 0 0;
 }
-
 /* admin page               */
-.adminside {
+.adminside{
     position: absolute;
     right: 30em;
     top: 3em;
     width: 0;
-    height: 0;
-    border-top: 20em solid transparent;
-    border-right: 25em solid white;
-    border-bottom: 20em solid transparent;
+	height: 0;
+	border-top: 20em solid transparent;
+	border-right: 25em solid white;
+	border-bottom: 20em solid transparent;
     opacity: 0.6;
 }
-
-.adminsides {
+.adminsides{
     background-color: white;
     position: absolute;
     right: 0;
@@ -258,15 +271,13 @@ input[type=number] {
     height: 38em;
     opacity: 0.6;
 }
-
-#logoName {
+#logoName{
     position: absolute;
     top: 17em;
     background-color: white;
     opacity: 0.6;
 }
-
-.hrline {
+.hrline{
     position: relative;
     top: -4em;
     border: none;

@@ -10,6 +10,8 @@ import SharedLayout from "./components/SharedLayout"
 import AboutUs from "./components/AboutUs"
 import UserDashBoard from "./components/UserDashBoard"
 import Home from "./components/Home"
+import Neetasp from "./components/Neetasp"
+import Neetlt from "./components/Neetlt"
 <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'></link>
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/admin" element={<AdminDashboard/>}/>
             <Route path="/about" element={<AboutUs/>}/>
             <Route path="/result" element={<UserDashBoard/>}/>
+            <Route path="neetasp" element={<Neetasp/>}/>
+            <Route path="neetlt" element={<Neetlt/>}/>
             </Route>
             <Route path="*" element={<Error/>}/>
           </Routes>
