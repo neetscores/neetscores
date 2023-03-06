@@ -41,7 +41,6 @@ const Neetasp = () => {
     }
   return (
     <>
-    <Button className='goback'><Nav.Link  as={Link} to={"/result"} >Go back</Nav.Link></Button>
     <TopImg/>
       <div className='resultform'>
         <form onSubmit={handleSubmit}>
