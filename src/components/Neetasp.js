@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormControl,InputLabel,Input} from '@mui/material';
+import { FormControl,InputLabel,Input,Select,MenuItem} from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -16,6 +16,7 @@ const Neetasp = () => {
 
     const [rollno,setrollno]=useState(0);
     const [rank, setrank] = useState('');
+    const [seatType, setseatType] = useState('');
     const [errors, setErrors] = useState({});
   
     function validateForm(){
@@ -25,6 +26,9 @@ const Neetasp = () => {
       }
       if(!rank){
         errors.rank="rank required"
+      }
+      if(!seatType){
+        errors.seatType="select seat type"
       }
       return errors;
     }
@@ -54,7 +58,7 @@ const Neetasp = () => {
     <Stack spacing={2}>
       <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
       <InputLabel htmlFor="my-input">NEET Roll no </InputLabel>
-      <Input id="my-input" aria-describedby="my-helper-text" type='number' onChange={(e)=>setrollno(e.target.value)}  />
+      <Input id="my-input" aria-describedby="my-helper-text" type='number'  onChange={(e)=>setrollno(e.target.value)}  />
       <span className='span'>{(rollno===0 || rollno==='') && errors.rollno}</span>
       <span className='span'>{rollno.length!==10 && errors.rolllen}</span>
       </FormControl>
@@ -69,6 +73,22 @@ const Neetasp = () => {
           <span className='span'>{!rank && errors.rank}</span>
         </FormControl>
       )}
+      {rank!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
+          <InputLabel id="demo-simple-select-standard-label">Seat Type in Andhra Pradesh Counselling</InputLabel>
+        <Select
+          value={seatType}
+          name='seatType'
+          
+          onChange={(event) => {
+            setseatType(event.target.value);
+          }}
+        >
+          <MenuItem value={"Government"}>Government Quota Seats</MenuItem>
+        <MenuItem value={"Management"}>Management Quota Seats</MenuItem>
+        <MenuItem value={"NRI"}>NRI Quota Seats</MenuItem>
+        </Select>
+        <span className='span'>{!seatType && errors.seatType}</span>
+      </FormControl>)}
     </Stack>
   </Box>
       </Typography>
@@ -85,7 +105,7 @@ const Neetasp = () => {
       </div>
 
       <div>
-        {rollno} {rank}
+        {rollno} {rank} {seatType}
       </div>
     </>
   )
