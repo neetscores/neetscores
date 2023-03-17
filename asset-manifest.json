@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/neetscores/static/css/main.09316c33.css",
-    "main.js": "/neetscores/static/js/main.26d86e4a.js",
+    "main.css": "/neetscores/static/css/main.627cd8b7.css",
+    "main.js": "/neetscores/static/js/main.5ccd044a.js",
     "static/media/neetImg.jpg": "/neetscores/static/media/neetImg.e762403c53f9521e5114.jpg",
+    "static/media/neetClg.png": "/neetscores/static/media/neetClg.90ba4e72252c05675111.png",
     "index.html": "/neetscores/index.html",
-    "main.09316c33.css.map": "/neetscores/static/css/main.09316c33.css.map",
-    "main.26d86e4a.js.map": "/neetscores/static/js/main.26d86e4a.js.map"
+    "main.627cd8b7.css.map": "/neetscores/static/css/main.627cd8b7.css.map",
+    "main.5ccd044a.js.map": "/neetscores/static/js/main.5ccd044a.js.map"
   },
   "entrypoints": [
-    "static/css/main.09316c33.css",
-    "static/js/main.26d86e4a.js"
+    "static/css/main.627cd8b7.css",
+    "static/js/main.5ccd044a.js"
   ]
 }
