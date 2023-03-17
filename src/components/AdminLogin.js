@@ -11,6 +11,7 @@ import {
 import '../App.js'
 import TopImg from "./TopImg";
 import SchoolIcon from '@mui/icons-material/School';
+import Footeer from "./Footeer";
 
 const AdminLogin = () => {
   const emailRef = useRef();
@@ -72,6 +73,7 @@ async function handleSubmit(e) {
             </Button>
           </Form>
       </div>
+      <Footeer/>
     </div>
   );
 };

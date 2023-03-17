@@ -1,16 +1,20 @@
-import React from 'react'
-import Button from '@mui/material/Button';
 import {CardActionArea} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import '../App.css'
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 import TopImg from './TopImg';
-function UserDashBoard() {
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Footeer from './Footeer';
+
+
+
+function UserDashBoard(props) {
   return (
     <div>
       <TopImg/>
@@ -58,10 +62,9 @@ function UserDashBoard() {
     </Card>
         </Grid>
       </Grid>
-      
       <div>
-      {/* {rank} {seatType} {localStatus} {PDisabled} {SplQuota} {casteInp} {sex} */}
       </div>
+      <Footeer/>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import TopImg from './TopImg'
 import '../App.css'
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
+import Footeer from './Footeer'
 
 function AboutUs() {
   return (
@@ -18,7 +19,7 @@ function AboutUs() {
         <p>Check course & counselling wise cut-offs of NEET for various state quotas, caste groups etc.</p>
       </div>
       </Grid2>
-      
+      <Footeer/>
     </div>
   )
 }

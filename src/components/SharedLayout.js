@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import { Outlet } from 'react-router-dom'
 import StyledNavbar from './StyledNavbar'
-import Footeer from './Footeer'
 import "../App.css"
 import { ThemeProvider, createTheme} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,7 +22,6 @@ function SharedLayout() {
       <StyledNavbar/>
       </div>
         <Outlet/>
-        <Footeer/>
     </ThemeProvider>
     </div>
   )

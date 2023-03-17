@@ -131,8 +131,8 @@ input[type=number] {
     justify-content: baseline;
 }
 .resultform{
-    /* position: absolute; */
-    top: 6em;
+    position: absolute;
+    top: 1em;
     left: 10em;
     z-index: 1;
 }
@@ -161,9 +161,22 @@ input[type=number] {
 /* NEET asp form */
 .resultform{
     position: absolute;
-    top: 10em;
+    top: 7em;
     margin-left: 10em;
 }
+
+.Neetdemo{
+    display: flex;
+}
+.Neetdemo>h1{
+    font-size: 5em;
+    margin-left: 1em;
+}
+.Neetdemo>p{
+    font-size: 2em;
+    margin-left: 4em;
+}
+
 
 
 
@@ -271,6 +284,8 @@ input[type=number] {
     height: 38em;
     opacity: 0.6;
 }
+
+
 #logoName{
     position: absolute;
     top: 17em;
@@ -284,4 +299,46 @@ input[type=number] {
     height: 12px;
     background: black;
     color: black;
+}
+
+
+/* admin dashboard             */
+
+.header{
+    height: 90vh;
+    z-index: 1;
+    position: absolute;
+    width: 20%;
+}
+
+.gridbox{
+    width: 80%;
+    margin-left: 20%;
+    z-index: 0;
+    position: absolute;
+    top:10em
+}
+
+.mainpage{
+    display: flex;
+    
+}
+.collegeList{
+    width: 40em;
+    height: 30em;
+    overflow: hidden;
+}
+.List2{
+    width: 40em;
+    height: 30em;
+    overflow: hidden;
+
+}
+.ClgImg{
+    background-image: url('../src/Images/neetClg.png');
+    width: 40em;
+    height: 30em;
+    background-position:initial;
+    background-repeat: no-repeat;
+    opacity: 0.8;
 }

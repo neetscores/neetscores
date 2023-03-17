@@ -9,6 +9,10 @@ import ModelButton from './ModelButton';
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { useAuth } from "../contexts/AuthContext";
+import { db } from "./firebase";
+import { addDoc, collection,serverTimestamp,getCountFromServer } from "firebase/firestore";
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 
 function rand() {
@@ -26,7 +30,7 @@ function rand() {
     };
   }
 function ModelLogin() {
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
   const [number, setNumber] = useState("");
   const [flag, setFlag] = useState(false);
   const [otp, setOtp] = useState("");
@@ -47,14 +51,29 @@ function ModelLogin() {
     } catch (err) {
       setError(err);
     }
+    
   };
 
+  const [users,setUsers]=useState(0);
+
+  const user=async()=>{
+    const coll = collection(db, "users");
+const snapshot = await getCountFromServer(coll);
+console.log('count: ', snapshot.data().count);
+setUsers(snapshot.data().count)
+  }
+  user();
   const verifyOtp = async (e) => {
     e.preventDefault();
     setError("");
     if (otp === "" || otp === null) return;
     try {
       await result.confirm(otp);
+      await addDoc(collection(db,"users"),{
+        id:users+1,
+        number:number,
+        timeStamp:serverTimestamp(),
+      }) 
       navigate("/result");
       setBool(true)
     } catch (err) {
@@ -62,8 +81,12 @@ function ModelLogin() {
     }
     bool ? handleClose() : window.location.reload(false);
   };
+
+
+
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+
   
     const handleOpen = () => {
       setOpen(true);

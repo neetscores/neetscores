@@ -49,6 +49,7 @@ function Footeer() {
                 <a rel="noreferrer" href='https://en.wikipedia.org/wiki/List_of_institutions_of_higher_education_in_Andhra_Pradesh' className='text-reset' target="_blank">
                   List of Colleges
                 </a>
+                
               </p>
               <p>
                 <a rel="noreferrer" href='https://en.wikipedia.org/wiki/National_Eligibility_cum_Entrance_Test_(Undergraduate)' className='text-reset' target="_blank">

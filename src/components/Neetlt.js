@@ -13,90 +13,181 @@ import '../App.css'
 import { FormLabel } from 'react-bootstrap';
 import TopImg from './TopImg';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Footeer from './Footeer';
+import { DataGrid } from '@mui/x-data-grid';
 const Neetlt = () => {
     
 
-    const [tScore,settScore]=useState(0);
-    const [seatType, setseatType] = useState('');
-    const [localStatus, setlocalStatus] =useState('');
-    const [ph, setph] = useState('');
-    const [cap, setCap]=useState('');
-    const [ews, setEws]=useState('');
-    const [ncc, setNcc]=useState('');
-    const [scandgu, setScandgu]=useState('');
-    const [sandg, setSandg]=useState('');
-    const [pmc, setPmc]=useState('');
-    const [minority, setMinority]= useState('');
-    const [Caste,setCaste] =useState('');
-    const [bcSub, setBCsub] =useState('');
-    const [casteInp,setCasteInp]=useState('');
-    const [gender,setgender] =useState('');
-    const [errors, setErrors] = useState({});
-  
-    function validateForm(){
-      let errors={};
-      if(tScore==="" || tScore===0){
-        errors.tScore="target score is required";
-      }
-      if(!seatType){
-        errors.seatType="select seat type"
-      }
-      if(!localStatus){
-        errors.localStatus="select local status"
-      }
-      if(!ph){
-        errors.ph="select physically disabled yes or no"
-      }
-      if(!Caste){
-        errors.Caste="select caste"
-      }
-      if(!bcSub){
-        errors.bcSub="select sub caste"
-      }
-      if(!gender){
-        errors.gender="select gender"
-      }
-      if(!minority){
-        errors.minority="required field"
-      }
-      if(!cap){
-        errors.cap="required"
-      }
-      if(!ews){
-        errors.ews="elegible for ews or not"
-      }
-      if(!ncc){
-        errors.ncc="applicable or not"
-      }
-      if(!scandgu){
-        errors.scandgu="applicable or not"
-      }
-      if(!sandg){
-        errors.sandg="applicable or not"
-      }
-      if(!pmc){
-        errors.pmc="elegible or not"
-      }
-      return errors;
-    }
-    function handleSubmit(event) {
+
+  const [formData, setFormData] = useState({
+  Score:"",
+  Category: "", 
+  Minority: "" ,
+   LocalArea: "", 
+   Gender: "" , 
+   EWS: "", 
+    PH:"",
+  });
+  const [result, setResult] = useState({});
+  const [allot,setAllot]=useState(0);
+  const [flag,setFlag]=useState(true);
+  const [flag1,setFlag1]=useState(false)
+  const [min,setMin]=useState("");
+
+
+  // api call -----------------------------------------------
+  const handleSubmit = async(event) => {
       event.preventDefault();
-    
-      const errors = validateForm();
-    
-      if (Object.keys(errors).length === 0) {
-        // Submit the form
-      } else {
-        setErrors(errors);
-      }
-    }
+      await fetch("/neetlt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setResult(data[0][0])
+          if(data[0].length===0){
+            setFlag1(true)
+          }
+          else{
+            setAllot(data[0][0]["ALLOTMENT"])
+          setMin(data[0][0].Minority)
+          if(data[0][0]["ALLOTMENT"]!== null){
+            setFlag(false)
+            console.log(data[0]);
+          }
+          }
+          
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+  };
+  
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+   // data showing       
+
+
+   const columns = [
+    { field: 'id', headerName: 'ID', width: 90 },
+    {
+      field: 'CollegeName',
+      headerName: 'College Name',
+      width: 500,
+      editable: true,
+    },
+    {
+      field: 'CollegeCode',
+      headerName: 'College Code',
+      width: 350,
+      editable: true,
+    },
+  ];
+  const data = [
+    {id:1,CollegeName:'Andhra Medical College, Visakhapatnam',CollegeCode:'AMCV'},
+    {id:2,CollegeName:'Guntur Medical College, Guntur',CollegeCode:'GMCG'},
+    {id:3,CollegeName:'Rangaraya Medical College, Kakinada',CollegeCode:'RMCK'},
+    {id:4,CollegeName:'Government Medical College (RIMS), Srikakulam',CollegeCode:'GMCS'},
+    {id:5,CollegeName:'Government Medical College (RIMS), Ongole',CollegeCode:'GMCO'},
+    {id:6,CollegeName:'NRI Institute of Medical Sciences, Visakhapatnam',CollegeCode:'NRIM'},
+    {id:7,CollegeName:'Katuri Medical College & Hospital, Chinakondrupadu, Guntur, Dist',CollegeCode:'KATR'},
+    {id:8,CollegeName:'Dr.Pinnamaneni Siddhartha Institute. Of Medical Sciences & Research Foundation, Chinaoutpalli, Gannavaram, Krishna Dist',CollegeCode:'PSIM'},
+    {id:9,CollegeName:'Alluri Sitarama Raju Academy of Medical Sciences, Eluru\x02W.G. Dist',CollegeCode:'ASRA'},
+    {id:10,CollegeName:'Konaseema Institute of Medical Sciences & Research Foundation, Amalapuram, E.G.Dist',CollegeCode:'KONA'},
+    {id:11,CollegeName:'Maharaja Institute of Medical Sciences, Nellimarla, Vizianagaram',CollegeCode:'MAHA'},
+    {id:12,CollegeName:'G.S.L. Medical College & Hospital, NH-5, Laxmipuram, Rajahmundry',CollegeCode:'GSLR'},
+    {id:13,CollegeName:'NRI Academy of Medical Sciences, Chinakakani, Guntur',CollegeCode:'NRVP'},
+    {id:14,CollegeName:'Great Eastern Medical School & Hospital, Ragolu (V), Srikakulam',CollegeCode:'GEMS'},
+    {id:15,CollegeName:'Gayatri Vidya Parishad Inst. Of Health Care and Medical Technology, Visakhapatnam',CollegeCode:'GVPT'},
+    {id:16,CollegeName:'Nimra Institute of Medical Sciences, Jupudi (V), Ibrahimpatnam (M), Vijayawada Krishna Dist',CollegeCode:'NIMR'},
+    {id:17,CollegeName:'S.V. Medical College, Alipiri Road, Tirupathi',CollegeCode:'SVMC'},
+    {id:18,CollegeName:'Kurnool Medical College, Kurnool',CollegeCode:'KMCK'},
+    {id:19,CollegeName:'Government Medical College (RIMS), Kadapa',CollegeCode:'GMCK'},
+    {id:20,CollegeName:'Government Medical College, Government Gen. Hosp. Road, Ananthapur',CollegeCode:'GMCA'},
+    {id:21,CollegeName:'ACSR Government Medical College, Nellore',CollegeCode:'ACSR'},
+    {id:22,CollegeName:'Narayana Medical College, Chinta Reddy Palem, Nellore',CollegeCode:'NARN'},
+    {id:23,CollegeName:'PES Institute of Medical Sciences & Research, Kuppam',CollegeCode:'PESK'},
+    {id:24,CollegeName:'Santhiram Medical College, Nandyal, Kurnool Dist',CollegeCode:'SRMC'},
+    {id:25,CollegeName:'Viswabarathi Medical College, R.T. Nagar, Near Penchikalapadu, Kurnool',CollegeCode:'VMCK'},
+    {id:26,CollegeName:'Apollo Institute of Medical Sciences & Research, Murukambattu (V), Chittoor District',CollegeCode:'APLC'},
+    {id:27,CollegeName:'Sri Balaji Medical College Hospital and Research Institute , Renigunta, Tirupati',CollegeCode:'BMCT'},
+    {id:28,CollegeName:'Sri Padmavathi Medical College for Women, Tirupati (under SVIMS, Tpt)',CollegeCode:'PADT'},
+    {id:29,CollegeName:'Fathima Institute of Medical Sciences, Kadapa',CollegeCode:'FIMS'},
+  ];
+  let rows;
+  if(min==="MUSLIM"){
+    rows=data.slice(allot-1, 29)
+  }
+  else{
+    rows=data.slice(allot-1, 28)
+  }
+  
+  const reload=()=>{
+    window.location.reload(false)
+  }
+  
   return (
     <>
     <TopImg/>
-      <div className='resultform'>
+    <div className='Neetdemo' style={{position:'absolute',top:'10em',display:(!flag && allot!=null) ? 'block' : 'none'}}>
+    <Card sx={{ maxWidth: 550 }} style={{marginLeft:'2em'}}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+          Given Data
+        </Typography>
+        <Typography variant="body2">
+        {/* <p>Score:{result?.NeetScore}</p> */}
+        <p>Category:{result?.Category}</p>
+        <p>Minority:{result?.Minority}</p>
+          <p>LocalArea:{result?.LocalArea}</p>
+        <p>Gender:{result?.Gender}</p>
+        <p>PH:{result?.PH}</p>
+        <p>EWS:{result?.EWS}</p>
+        </Typography>
+        <CardActions>
+        <Button onClick={reload}>Predict another</Button>
+        </CardActions>
+      </CardContent>
+    </Card>
+        <h1>Based on your score:</h1>
+        <p>You have chances to get seat in cat A colleges below</p>
+      </div>
+      <div className='Neetdemo' style={{position:'absolute',top:'5em',display:flag1 ? 'block' : 'none'}}>
+      <Card sx={{ maxWidth: 550 }} style={{marginLeft:'2em'}}>
+      <CardContent>
+        <Typography variant="h5" component="div">
+          For Given Data
+        </Typography>
+        <Typography variant="body2">
+        {/* <p>Score:{result?.NeetScore}</p>
+        <p>Category:{result?.Category}</p>
+        <p>Minority:{result?.Minority}</p>
+        <p>LocalArea:{result?.LocalArea}</p>
+        <p>Gender:{result?.Gender}</p>
+        <p>PH:{result?.PH}</p>
+        <p>EWS:{result?.EWS}</p> */}
+        </Typography>
+        <CardActions>
+        <Button onClick={reload}>Predict another</Button>
+        </CardActions>
+      </CardContent>
+    </Card>
+      <h1>Aww :(</h1>
+      <p>Sorry no colleges Found</p>
+      </div>
+      <div className='resultform' style={{display:(flag && !flag1) ? 'block' : 'none'}}>
         <form onSubmit={handleSubmit}>
-      <Box sx={{ maxWidth: 550 }}>
-    <Card variant="outlined" width='20em'>
+      <Box sx={{ maxWidth: 900 }}>
+    <Card variant="outlined" width='80em'>
     <React.Fragment>
     <CardContent>
     <h5>Enter National Eligibility cum Entrance Test (NEET) Exam Details</h5>
@@ -105,214 +196,102 @@ const Neetlt = () => {
     <Stack spacing={2}>
       <FormControl>
       <InputLabel htmlFor="my-input">enter target score</InputLabel>
-      <Input id="my-input" aria-describedby="my-helper-text" type='number' onChange={(e)=>settScore(e.target.value)}  />
-      <span className='span'>{(tScore===0 || tScore==='') && errors.tScore}</span>
+      <Input  aria-describedby="my-helper-text" id="score" name="Score" onChange={handleChange} style={{width:'20em'}}/>
       </FormControl>
 
-      <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-          <InputLabel id="demo-simple-select-standard-label">Seat Type in Andhra Pradesh Counselling</InputLabel>
-        <Select
-          value={seatType}
-          name='seatType'
-          
-          onChange={(event) => {
-            setseatType(event.target.value);
-          }}
-        >
-          <MenuItem value={"Government"}>Government Quota Seats</MenuItem>
-        <MenuItem value={"Management"}>Management Quota Seats</MenuItem>
-        <MenuItem value={"NRI"}>NRI Quota Seats</MenuItem>
-        </Select>
-        <span className='span'>{!seatType && errors.seatType}</span>
-      </FormControl>
-
-      {seatType !== ''  && (tScore!==0 && tScore!=='') && (
-        <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">Local/Non-Local Status</InputLabel>
-          <Select
-            value={localStatus}
-            name='localStatus'
-            
-            onChange={(event) => setlocalStatus(event.target.value)}
-          >
-            <MenuItem value={"AU"}>AU -Andhra University Region</MenuItem>
-  <MenuItem value={"NA"}>Unreserved -Non local for all regions</MenuItem>
-  <MenuItem value={"OU"}>OU -Osmania University Region</MenuItem>
-  <MenuItem value={"SVU"}>SVU -Sri Venkateshwara University</MenuItem>
-          </Select>
-          <span className='span'>{!localStatus && errors.localStatus}</span>
-        </FormControl>
-
-
-      )}
-      {localStatus !== '' && (
-        <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">Are you Physically Disabled?</InputLabel>
-          <Select
-            value={ph}
-            name='ph'
-            
-            onChange={(event) => setph(event.target.value)}
-          >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
-          </Select>
-          <span className='span'>{!ph && errors.ph}</span>
-        </FormControl>
-      )}
-
-{ph !== '' && (
-        <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">Minority</InputLabel>
-          <Select
-            value={minority}
-            name='minority'
-            
-            onChange={(event) => setMinority(event.target.value)}
-          >
-            <MenuItem value={"christian"}>Christian</MenuItem>
-            <MenuItem value={"muslim"}>Muslim</MenuItem>
-            <MenuItem value={"others"}>Others</MenuItem>
-          </Select>
-          <span className='span'>{!minority && errors.minority}</span>
-        </FormControl>
-      )}
-
-{minority !== '' && (<>
-        <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">Caste Group</InputLabel>
-          <Select
-            value={Caste}
-            name='Caste'
-            
-            onChange={(event) => {setCaste(event.target.value);setCasteInp(event.target.value)}}
-          >
-            <MenuItem value={"Open"}>Open</MenuItem>
-  <MenuItem value={"BC"}>Backward Castes</MenuItem>
-  <MenuItem value={"Sc"}>Scheduled Castes</MenuItem>
-  <MenuItem value={"St"}>Scheduled Tribe</MenuItem>
-
-          </Select>
-          <span className='span'>{!Caste && errors.Caste}</span>
-        </FormControl>
-        {Caste ==='BC' && (
-          <FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-          <InputLabel id="demo-simple-select-standard-label">Sub-Caste in Backward Caste</InputLabel>
+      
+        <div style={{display:'flex'}}>
+        <FormControl variant="filled" sx={{ m: 1, maxWidth: 400 }} style={{width:'12em'}}>
+          <InputLabel id="demo-simple-select-standard-label">Local Area</InputLabel>
             <Select
-              value={bcSub}
-              name='bcSub'
-              
-              onChange={(event) => {setBCsub(event.target.value);setCasteInp(event.target.value)}}
+              value={FormData.LocalArea}
+              name='LocalArea'
+              onChange={handleChange}
             >
-              <MenuItem value={"BCA"}>Backward Castes -A</MenuItem>
-              <MenuItem value={"BCB"}>Backward Castes -B</MenuItem>
-              <MenuItem value={"BCC"}>Backward Castes -C</MenuItem>
-              <MenuItem value={"BCD"}>Backward Castes -D</MenuItem>
-              <MenuItem value={"BCE"}>Backward Castes -E</MenuItem>
-  
+              <MenuItem value={"AU"}>AU</MenuItem>
+              <MenuItem value={"SVU"}>SVU </MenuItem>
+              <MenuItem value={"OU"}>OU</MenuItem>
             </Select>
-            <span className='span'>{!bcSub && errors.bcSub}</span>
           </FormControl>
-          )}
-</>
-      )}
-      {Caste!=='' && (
+          <FormControl variant="filled" sx={{ m: 1, maxWidth: 600 }} style={{width:'18em'}}>
+          <InputLabel id="demo-simple-select-standard-label">Caste</InputLabel>
+            <Select
+              value={FormData.Category}
+              name='Category'
+              onChange={handleChange}
+              
+              
+            >
+              <MenuItem value={"OC"}>Open</MenuItem>
+              <MenuItem value={"BC-A"}>Backward Castes -A</MenuItem>
+              <MenuItem value={"BC-B"}>Backward Castes -B</MenuItem>
+              <MenuItem value={"BC-C"}>Backward Castes -C</MenuItem>
+              <MenuItem value={"BC-D"}>Backward Castes -D</MenuItem>
+              <MenuItem value={"BC-E"}>Backward Castes -E</MenuItem>
+              <MenuItem value={"SC"}>Scheduled Castes</MenuItem>
+              <MenuItem value={"ST"}>Scheduled Tribe</MenuItem>
+            </Select>
+          </FormControl>
+          </div>
+        
         <FormControl component="fieldset">
         <FormLabel component="legend">Gender</FormLabel>
-      <RadioGroup aria-label="gender" value={gender} name='gender'  onChange={(event)=>setgender(event.target.value)}>
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
+      <RadioGroup aria-label="gender" value={FormData.Gender} name='Gender' onChange={handleChange}>
+        <div style={{display:'flex'}}>
+        <FormControlLabel value={"Female"} control={<Radio />} label="Female" />
+        <FormControlLabel value={"Male"} control={<Radio />} label="Male" />
+        </div>
+        
       </RadioGroup>
-      <span className='span'>{!gender && errors.gender}</span>
     </FormControl>
-      )}
 
-      {gender!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">CAP</InputLabel>
+        {/* <div style={{display:'flex',width:'100%',justifyContent:'space-evenly',alignItems:'center'}}> */}
+       
+
+
+      
+
+      <div style={{display:'flex'}}>
+      <FormControl variant="filled" sx={{ m: 1, maxWidth: 400 }} style={{width:'12em'}}>
+        <InputLabel id="demo-simple-select-standard-label">PH</InputLabel>
           <Select
-            value={cap}
-            name='cap'
-            
-            onChange={(event) => setCap(event.target.value)}
+            value={FormData.PH}
+            name='PH'
+            onChange={handleChange}
+           
           >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
+            <MenuItem value={"YES"}>yes</MenuItem>
+            <MenuItem value={"NO"}>no</MenuItem>
           </Select>
-          <span className='span'>{!cap && errors.cap}</span>
-        </FormControl>)}
+        </FormControl>
+      <FormControl variant="filled" sx={{ m: 1, maxWidth: 400 }} style={{width:'12em'}}>
+        <InputLabel id="demo-simple-select-standard-label">Minority</InputLabel>
+          <Select
+            value={FormData.Minority}
+            name='Minority'
+             onChange={handleChange}
+            
+          >
+            <MenuItem value={"MUSLIM"}>Muslim</MenuItem>
+            <MenuItem value={"NONE"}>none</MenuItem>
+          </Select>
+        </FormControl>
 
-        {cap!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
+        <FormControl variant="filled" sx={{ m: 1, maxWidth: 400 }} style={{width:'12em'}}>
         <InputLabel id="demo-simple-select-standard-label">EWS</InputLabel>
           <Select
-            value={ews}
-            name='ews'
-            
-            onChange={(event) => setEws(event.target.value)}
+            value={FormData.EWS}
+            name='EWS'
+            onChange={handleChange}
+          
           >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
+            <MenuItem value={"YES"}>yes</MenuItem>
+  <MenuItem value={"NO"}>no</MenuItem>
           </Select>
-          <span className='span'>{!ews && errors.ews}</span>
-        </FormControl>)}
+         
+        </FormControl>
 
-        {ews!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">NCC</InputLabel>
-          <Select
-            value={ncc}
-            name='ncc'
-            
-            onChange={(event) => setNcc(event.target.value)}
-          >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
-          </Select>
-          <span className='span'>{!ncc && errors.ncc}</span>
-        </FormControl>)}
-
-
-        {ncc!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">SC&GU</InputLabel>
-          <Select
-            value={scandgu}
-            name='scandgu'
-            
-            onChange={(event) => setScandgu(event.target.value)}
-          >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
-          </Select>
-          <span className='span'>{!scandgu && errors.scandgu}</span>
-        </FormControl>)}
-
-        {scandgu!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">S&G</InputLabel>
-          <Select
-            value={sandg}
-            name='sandg'
-            
-            onChange={(event) => setSandg(event.target.value)}
-          >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
-          </Select>
-          <span className='span'>{!sandg && errors.sandg}</span>
-        </FormControl>)}
-
-
-        {sandg!=='' && (<FormControl variant="filled" sx={{ m: 1, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-standard-label">PMC</InputLabel>
-          <Select
-            value={pmc}
-            name='pmc'
-            
-            onChange={(event) => setPmc(event.target.value)}
-          >
-            <MenuItem value={"yes"}>yes</MenuItem>
-  <MenuItem value={"no"}>no</MenuItem>
-          </Select>
-          <span className='span'>{!pmc && errors.pmc}</span>
-        </FormControl>)}
+        </div>
 
     </Stack>
   </Box>
@@ -330,9 +309,23 @@ const Neetlt = () => {
   </Box>
   </form>
       </div>
-      <div>
-        {tScore} {casteInp} {minority} {localStatus} {gender} {cap} {ph} {ews} {ncc} {scandgu} {sandg} {pmc}
-      </div>
+      <Box sx={{ height: 600, width: '70%' }} style={{margin:'2em 10em',display:(!flag && result!=null) ? 'block' : 'none'}}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 8,
+            },
+          },
+        }}
+        // pageSizeOptions={[5]}
+        // checkboxSelection
+        // disableRowSelectionOnClick
+      />
+    </Box>
+      <Footeer/>
     </>
   )
 }

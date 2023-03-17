@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import Footeer from './Footeer';
 
 function Home(props) {
   const Item = styled(Paper)(({ theme }) => ({
@@ -62,6 +63,7 @@ function Home(props) {
         </Grid>
       </Grid>
       </div>
+      <Footeer/>
     </div>
   )
 }
