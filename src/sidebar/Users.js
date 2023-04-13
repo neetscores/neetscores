@@ -27,8 +27,7 @@ function Users() {
         setUsers(usersData);
         console.log(usersData);
        
-      };
-  
+      };  
       fetchUsers();
     }, []);
     
@@ -36,7 +35,8 @@ function Users() {
   
     return (
       <div>
-        <Sidebar/>
+        <div style={{position:'fixed'}}><Sidebar/></div>
+        
         <div style={{marginLeft:'20em'}}>
         </div>
     <TableContainer component={Paper} style={{paddingLeft:'20em',heigth:'100vh'}}>
@@ -50,7 +50,8 @@ function Users() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((row) => (
+          {
+          users.sort((a,b)=>a.id-b.id).map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

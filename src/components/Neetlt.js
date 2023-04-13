@@ -122,6 +122,7 @@ const Neetlt = () => {
     {id:27,CollegeName:'Sri Balaji Medical College Hospital and Research Institute , Renigunta, Tirupati',CollegeCode:'BMCT'},
     {id:28,CollegeName:'Sri Padmavathi Medical College for Women, Tirupati (under SVIMS, Tpt)',CollegeCode:'PADT'},
     {id:29,CollegeName:'Fathima Institute of Medical Sciences, Kadapa',CollegeCode:'FIMS'},
+    {id:30,CollegeName:'Nimra Institute of Medical Sciences, Jupudi (V), Ibrahimpatnam (M), Vijayawada Krishna Dist.',CollegeCode:'NIMR'},
   ];
   let rows;
   if(min==="MUSLIM"){
@@ -142,7 +143,7 @@ const Neetlt = () => {
     <Card sx={{ maxWidth: 550 }} style={{marginLeft:'2em'}}>
       <CardContent>
         <Typography variant="h5" component="div">
-          Given Data
+        Not a Current Aspirant
         </Typography>
         <Typography variant="body2">
         {/* <p>Score:{result?.NeetScore}</p> */}

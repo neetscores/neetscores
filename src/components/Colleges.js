@@ -7,7 +7,7 @@ import {FiArrowLeftCircle } from "react-icons/fi";
 import {
     MenuItem,
   } from "react-pro-sidebar";
-import Sidebar from './Sidebar';
+import Footeer from './Footeer';
 
 
   const columns = [
@@ -57,13 +57,13 @@ const rows = [
   {id:27,CollegeName:'Sri Balaji Medical College Hospital and Research Institute , Renigunta, Tirupati',CollegeCode:'BMCT'},
   {id:28,CollegeName:'Sri Padmavathi Medical College for Women, Tirupati (under SVIMS, Tpt)',CollegeCode:'PADT'},
   {id:29,CollegeName:'Fathima Institute of Medical Sciences, Kadapa',CollegeCode:'FIMS'},
+  {id:30,CollegeName:'Nimra Institute of Medical Sciences, Jupudi (V), Ibrahimpatnam (M), Vijayawada Krishna Dist.',CollegeCode:'NIMR'},
 ];
 
-function DataList() {
+function Colleges() {
   return (
     <div>
-       <div style={{position:'fixed'}}><Sidebar/></div>
-      <MenuItem icon={<FiArrowLeftCircle />} style={{display:'inline-block'}}><Nav.Link  as={Link} to={"/admin"} > Back </Nav.Link></MenuItem>
+      <MenuItem icon={<FiArrowLeftCircle />} style={{display:'inline-block'}}><Nav.Link  as={Link} to={"/"} > Back </Nav.Link></MenuItem>
       <Box sx={{ height: 600, width: '70%' }} style={{marginLeft:'20em'}}>
       <DataGrid
         rows={rows}
@@ -80,10 +80,11 @@ function DataList() {
         disableRowSelectionOnClick
       />
     </Box>
+    <Footeer/>
     </div>
   )
 }
 
-export default DataList
+export default Colleges
 
 

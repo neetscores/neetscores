@@ -1,5 +1,5 @@
 const config = {
-    server: "NITHISH---LAPI", 
+    server: "192.168.169.87,1433", 
     database:"MBBSAdmissionsProject",
     driver:"msnodesqlv8",
     options:{

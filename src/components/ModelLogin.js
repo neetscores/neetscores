@@ -86,10 +86,15 @@ setUsers(snapshot.data().count)
 
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+    const [but,setBut]=useState(false)
 
+    const butt=()=>{
+      setBut(true)
+    }
   
     const handleOpen = () => {
       setOpen(true);
+
     };
     const handleClose=()=>{
         setOpen(false)
@@ -145,7 +150,7 @@ setUsers(snapshot.data().count)
       </div>
     </div>
 
-        <CloseIcon onClick={(e)=>{setOpen(false);setError("");}} style={{position:'absolute',top:'5px',right:'-30px',cursor:'pointer'}}>close</CloseIcon>
+        <CloseIcon onClick={handleClose} style={{position:'absolute',top:'5px',right:'-30px',cursor:'pointer'}}>close</CloseIcon>
       </div>
     );
   return (

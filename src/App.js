@@ -14,6 +14,7 @@ import Neetasp from "./components/Neetasp"
 import Neetlt from "./components/Neetlt"
 import DataList from "./sidebar/DataList";
 import Users from "./sidebar/Users"
+import Colleges from "./components/Colleges"
 <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'></link>
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<SharedLayout/>}>
             <Route index element={<Home/>}/>
             <Route path="/adminlogin" element={<AdminLogin/>}/>
+            <Route path="/colleges" element={<Colleges/>}/>
             <Route path="/" element={<ModelLogin/>}/>
             <Route path="/admin" element={<AdminDashboard/>}/>
             <Route path="/about" element={<AboutUs/>}/>

@@ -29,7 +29,6 @@ function UserDashBoard(props) {
           <Typography variant="body2" color="text.secondary" className='Dp'>
             <p>Predict your admission chances in MBBS seats through Andhra Pradesh counselling</p>
             <p>Includes 85% State Quota seats in govt. and private colleges through merit & management quota</p>
-            <p>Check NEET state-wise cutoffs for 27 states of India</p>
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -50,7 +49,6 @@ function UserDashBoard(props) {
           <Typography variant="body2" color="text.secondary" className='Dp'>
             <p>Predict your admission chances in MBBS seats through Andhra Pradesh counselling</p>
             <p>Includes 85% State Quota seats in govt. and private colleges through merit & management quota</p>
-            <p>Check NEET state-wise cutoffs for 27 states of India</p>
           </Typography>
         </CardContent>
       </CardActionArea>

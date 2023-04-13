@@ -2,6 +2,8 @@ import React from 'react';
 import {  Container, Row, Col  } from 'react-bootstrap';
 import {BsFacebook,BsInstagram,BsTwitter,BsGoogle,BsLinkedin,BsGithub,BsFillHouseDoorFill,BsFillEnvelopeFill,BsFillTelephoneFill} from "react-icons/bs"
 import "../App.css"
+import Nav from 'react-bootstrap/Nav';
+import { Link } from 'react-router-dom';
 
 function Footeer() {
   return (
@@ -46,15 +48,8 @@ function Footeer() {
             <Col md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
               <p>
-                <a rel="noreferrer" href='https://en.wikipedia.org/wiki/List_of_institutions_of_higher_education_in_Andhra_Pradesh' className='text-reset' target="_blank">
-                  List of Colleges
-                </a>
+              <Nav.Link  as={Link} to={"/colleges"} style={{textDecoration:'underline'}}>List of Colleges</Nav.Link>
                 
-              </p>
-              <p>
-                <a rel="noreferrer" href='https://en.wikipedia.org/wiki/National_Eligibility_cum_Entrance_Test_(Undergraduate)' className='text-reset' target="_blank">
-                  Exam Cutoff
-                </a>
               </p>
             </Col>
             <Col md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
